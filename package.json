@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "setUpFile": "node puppeteer-tutorial.js",
     "failScreenshot": "node screenshot.js",
-    "screenshotWithArg": "node screenshot.js https://github.com"
+    "screenshotWithArg": "node screenshot.js https://github.com",
+    "hackerNewsScraper": "node hackerNews-scraper.js"
   },
   "author": "",
   "license": "ISC",
