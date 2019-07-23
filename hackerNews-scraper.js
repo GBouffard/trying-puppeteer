@@ -52,6 +52,7 @@ const getHackerNews = (pagesToScrape = 1) =>
         currentPage++
       }
 
+      // await page.waitFor(5000); this is equivalent to a .sleep mode with other browser automation tool.
       browser.close() // .close when done.
       return resolve(urls)
     } catch (e) {
