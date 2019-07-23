@@ -8,6 +8,15 @@ const getHackerNews = (pagesToScrape = 1) =>
       // set-up to go to a page
       const browser = await puppeteer.launch()
       const page = await browser.newPage()
+
+      // this optional part is to only allow requests with the resource type of "document" to get through our filter, meaning that we will block all images, CSS, and everything else besides the original HTML response.
+      await page.setRequestInterception(true)
+      page.on('request', request =>
+        request.resourceType() === 'document'
+          ? request.continue()
+          : request.abort()
+      )
+
       await page.goto(hackerNewsUrl)
 
       let currentPage = 1
@@ -35,6 +44,7 @@ const getHackerNews = (pagesToScrape = 1) =>
         if (currentPage < pagesToScrape) {
           await Promise.all([
             // to automatically click on the more button of HackerNews if we want more links.
+            await page.waitForSelector('a.morelink'),
             await page.click('a.morelink'), // .click
             await page.waitForSelector('a.storylink') // .waitForSelector
           ])
