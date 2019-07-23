@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "puppeteerTutorial": "node puppeteer-tutorial.js"
+    "setUpFile": "node puppeteer-tutorial.js",
+    "failScreenshot": "node screenshot.js",
+    "screenshotWithArg": "node screenshot.js https://github.com"
   },
   "author": "",
   "license": "ISC",
